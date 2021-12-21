@@ -1,4 +1,4 @@
-package com.imooc.orderservicemanager.vo;
+package com.imooc.food.orderservicemanager.vo;
 
 import lombok.Getter;
 import lombok.Setter;
