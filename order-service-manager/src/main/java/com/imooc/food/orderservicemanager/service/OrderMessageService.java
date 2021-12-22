@@ -17,7 +17,7 @@ public class OrderMessageService {
     /**
      * 声明消息队列、交换机、绑定、消息的处理
      */
-    public static void handleMessage() throws IOException, TimeoutException {
+    public void handleMessage() throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");
 //        connectionFactory.setPort(15672);
@@ -51,7 +51,4 @@ public class OrderMessageService {
         }
     }
 
-    public static void main(String[] args) throws IOException, TimeoutException {
-        handleMessage();
-    }
 }
