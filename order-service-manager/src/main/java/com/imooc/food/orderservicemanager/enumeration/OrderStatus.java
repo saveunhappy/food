@@ -20,5 +20,9 @@ public enum OrderStatus {
     /**
      * 订单已创建
      */
-    ORDER_CREATE
+    ORDER_CREATE,
+    /**
+     * 订单创建失败
+     */
+    FAILED;
 }
