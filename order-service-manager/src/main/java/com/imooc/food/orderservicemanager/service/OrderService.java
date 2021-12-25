@@ -30,7 +30,7 @@ public class OrderService {
         orderDetailPO.setAddress(orderCreateVO.getAddress());
         orderDetailPO.setAccountId(orderCreateVO.getAccountId());
         orderDetailPO.setProductId(orderCreateVO.getProductId());
-        orderDetailPO.setStatus(OrderStatus.ORDER_CREATE);
+        orderDetailPO.setStatus(OrderStatus.ORDER_CREATING);
         orderDetailPO.setDate(new Date());
         orderDetailDao.insert(orderDetailPO);
 

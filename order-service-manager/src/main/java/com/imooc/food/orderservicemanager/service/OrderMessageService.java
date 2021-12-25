@@ -7,6 +7,7 @@ import com.imooc.food.orderservicemanager.enumeration.OrderStatus;
 import com.imooc.food.orderservicemanager.po.OrderDetailPO;
 import com.rabbitmq.client.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,7 +26,8 @@ public class OrderMessageService {
     /**
      * 声明消息队列、交换机、绑定、消息的处理
      */
-    public void handleMessage() throws IOException, TimeoutException {
+    @Async
+    public void handleMessage() throws IOException, TimeoutException, InterruptedException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");
 //        connectionFactory.setPort(15672);
@@ -56,6 +58,10 @@ public class OrderMessageService {
             channel.queueBind("queue.order",
                     "exchange.order.delivery",
                     "key.order");
+            channel.basicConsume("queue.order",true,deliverCallback,consumerTag -> {});
+            while (true){
+                Thread.sleep(10000000);
+            }
         }
     }
 
